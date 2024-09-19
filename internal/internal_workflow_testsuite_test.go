@@ -1780,6 +1780,8 @@ func (s *WorkflowTestSuiteUnitTest) Test_UpsertSearchAttributes_ReservedKey() {
 
 func (s *WorkflowTestSuiteUnitTest) Test_MockUpsertSearchAttributes() {
 	workflowFn := func(ctx Context) error {
+		GetVersion(ctx, "test_change_id", DefaultVersion, 0)
+		
 		attr := map[string]interface{}{}
 		err := UpsertSearchAttributes(ctx, attr)
 		s.Error(err)
